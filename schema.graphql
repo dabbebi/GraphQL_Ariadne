@@ -33,5 +33,6 @@ type DeletePostResult {
 
 type Mutation {
     createPost(title: String!, body: String!): PostResult!
+    updatePost(postId : ID!, title: String!, body: String!): PostResult!
     deletePost(postId: ID!): DeletePostResult!
 }

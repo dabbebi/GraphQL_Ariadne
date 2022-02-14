@@ -23,7 +23,7 @@ def run():
     from ariadne.constants import PLAYGROUND_HTML
     from flask import request, jsonify
     from schemas.postQuery import resolve_posts, resolve_post
-    from schemas.postMutation import resolve_create_post
+    from schemas.postMutation import resolve_create_post, resolve_update_post, resolve_delete_post
     # Query
     query = ObjectType("Query")
 
@@ -35,6 +35,8 @@ def run():
     mutation = ObjectType("Mutation")
 
     mutation.set_field("createPost", resolve_create_post)
+    mutation.set_field("updatePost", resolve_update_post)
+    mutation.set_field("deletePost", resolve_delete_post)
 
     schema = make_executable_schema(
         type_defs, query, mutation, snake_case_fallback_resolvers
